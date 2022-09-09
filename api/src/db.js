@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+//LLAVES DE ENTORNO, VAR DE ENTORNO.
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
