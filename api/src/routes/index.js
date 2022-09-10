@@ -84,8 +84,8 @@ router.get('/dogs', async (req,res)=>{
 
 //get temperaments traer de Api y guardar en la db propia.. RUTA 5.
 router.get("/temperaments", async (req, res) => {
-    const allData = await axios.get('https://api.thedogapi.com/v1/breeds');
     try {
+    const allData = await axios.get('https://api.thedogapi.com/v1/breeds');    
     let everyTemperament = allData.data
         .map((dog) => (dog.temperament ? dog.temperament : "No info"))
         .map((dog) => dog?.split(", "));
