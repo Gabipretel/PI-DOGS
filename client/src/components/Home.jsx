@@ -4,11 +4,23 @@ import {useDispatch, useSelector} from 'react-redux'
 import { getDogs } from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
+import Pagination from './Pagination'
+
 function Home() {
     const dispatch = useDispatch(); //reemplaza a la fn mapDispatchToProps.
     const allDogs= useSelector((state) => state.dogs) //reemplaza el mapStateToProps.
+    //PAGINADO VARIOS ESTADOS LOCALES.
+    const [currentPage, setCurrentPage] = useState(1)
+    const [dogsPerPage, setDogsPerPage] = useState(8)
+    const lastDog= currentPage * dogsPerPage //8
+    const firstDog= lastDog - dogsPerPage //8-8 = 0
+    const currentDogs= allDogs.slice(firstDog,lastDog) // indice 0 hasta el 5.
+    
+    const paginado = (pageNumber)=>{
+        setCurrentPage(pageNumber)
+    }
 
-    useEffect(()=>{          // Se ejecuta cuando el componente se monta y se actualiza si se le pasa alguna dependencia
+    useEffect(()=>{    // Se ejecuta cuando el componente se monta y se actualiza si se le pasa alguna dependencia
         dispatch(getDogs())
     },[])
 
@@ -33,19 +45,32 @@ function Home() {
                     <option value='api'>Existentes</option>
                 </select>
                 <select>
-                    <option value='All'>Temperamento</option>
+                    <option value='Raza'>Temperamento</option>
                     <option value='created'>Razas</option>
                 </select>
+                
+                <Pagination
+                dogsPerPage={dogsPerPage} // Estado local
+                allDogs={allDogs.length}   // useSelector -->state.dogs
+                paginado={paginado} // function de paginacion
+                />
+
 
                 {
-                    allDogs && allDogs.map((d)=>{
+                    currentDogs && currentDogs.map((d)=>{
                         return(
-                            <Card 
+                            <>
+                            <Link to={`/home/${d.id}`}>
+                            <Card
+                            key={d.id}
                             name={d.name} 
-                            temperament={d.temperament} 
-                            weight={d.weight} 
                             image={d.image}
+                            temperament={d.temperament} 
+                            weight_min={d.weight_min}
+                            weight_max={d.weight_max}
                             />
+                            </Link>
+                            </>
                         )
                     })
                 }

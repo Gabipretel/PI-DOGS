@@ -1,14 +1,14 @@
 import React from 'react'
 
-function Card({name,image,temperament,weight}) {
+function Card({name,image,temperament,weight_min,weight_max}) {
     return (
         <div>
             <h3>{name}</h3>
-            <h5>{temperament}</h5>
-            <h5>{weight}</h5>
-            <img src={image} alt='img not found' width='200px' height='250px'/>
+            <h4>{temperament}</h4>
+            <div>Peso mínimo{' '}{weight_min}</div>  
+            <div>Peso máximo{' '}{weight_max}</div>
+            <img src={image} alt='img not found' width='300px' height='300px'/>
         </div>
     )
 }
-
 export default Card
