@@ -5,7 +5,7 @@ function LandingPage() {
         <div>
             <h1>Encuentra tu Mascota ideal</h1>
             <Link to='/home'>
-                <button>Ingrese Aquí 🥰</button>
+                <button>Ingrese Aquí 🐶</button>
             </Link>
         </div>
     )

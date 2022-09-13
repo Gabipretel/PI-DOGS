@@ -51,10 +51,9 @@ function Home() {
                 
                 <Pagination
                 dogsPerPage={dogsPerPage} // Estado local
-                allDogs={allDogs.length}   // useSelector -->state.dogs
+                allDogs={allDogs.length}  // useSelector -->state.dogs
                 paginado={paginado} // function de paginacion
                 />
-
 
                 {
                     currentDogs && currentDogs.map((d)=>{
