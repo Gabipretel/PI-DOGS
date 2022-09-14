@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED } from "./actions";
+import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME } from "./actions";
 
 export function getDogs(){
     return async function(dispatch){
@@ -19,7 +19,13 @@ export function getDogs(){
 // }
 export function filterCreated(payload){
     return{
-        type:'FILTER_CREATED',
+        type:FILTER_CREATED,
+        payload
+    }
+}
+export function orderByName(payload){
+    return{
+        type:ORDER_BY_NAME,
         payload
     }
 }

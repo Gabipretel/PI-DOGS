@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { filterDogsbyTemperament, getDogs,filterCreated } from '../actions'
+import { filterDogsbyTemperament, getDogs,filterCreated, orderByName } from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import Pagination from './Pagination'
@@ -15,6 +15,8 @@ function Home() {
     const lastDog= currentPage * dogsPerPage //8
     const firstDog= lastDog - dogsPerPage //8-8 = 0
     const currentDogs= allDogs.slice(firstDog,lastDog) // indice 0 hasta el 5.
+    //-----//
+    const [orden, setOrden] = useState('')
     
     const paginado = (pageNumber)=>{
         setCurrentPage(pageNumber)
@@ -36,6 +38,14 @@ function Home() {
         dispatch(filterCreated(e.target.value))
     }
 
+
+    const handleSort=(e)=>{
+        e.preventDefault();
+        dispatch(orderByName(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    }
+
     return (
         <div>
             <Link to='/character'>Crea tu Mascota</Link>
@@ -43,9 +53,9 @@ function Home() {
             <button onClick={e =>{handleClick(e)}}>Volvé a cargar las mascotas</button>
 
             <div>
-                <select>
-                    <option value="asc">Ascendente</option>
-                    <option value="desc">Descendente</option>
+                <select onChange={e =>handleSort(e)}>
+                    <option value="asc">Ascendente A-Z</option>
+                    <option value="desc">Descendente Z-A</option>
                 </select>
                 
                 <select onChange={e =>handleFilterCreated(e)}>
