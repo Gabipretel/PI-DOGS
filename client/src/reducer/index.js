@@ -1,7 +1,8 @@
-import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME } from "../actions/actions"
+import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP } from "../actions/actions"
 const initialState= {
     dogs :[],
-    alldogs:[] // ver xq no va el = y el visual me pone el :
+    alldogs:[], // ver xq no va el = y el visual me pone el :
+    temperaments:[] 
 }
 function rootReducer (state= initialState, action){
     switch (action.type) {     //if (action.type === 'GET_DOGS') return ...state, dogs:action.payload
@@ -43,9 +44,11 @@ function rootReducer (state= initialState, action){
                     ...state,
                     dogs: dogsOrder
                 }
-
-
-            
+        case GET_TEMPERAMENTS_LIST:
+                return {
+                    ...state,
+                    temperaments: action.payload,
+                    };
             // ARREGLAR NO FUNCIONA
         // case FILTER_BY_TEMPERAMENT:
         //     const allDogs = state.dogs
@@ -54,8 +57,16 @@ function rootReducer (state= initialState, action){
         //         ...state,
         //         dogs: statusFiltered
         //     }
-            
 
+        // case GET_DOGS_BY_TEMP: // ARREGLAR NO FUNCIONA
+         
+        //     const perros= state.alldogs
+        //     const filterTemp= action.payload === 'all' ? perros : perros.filter(dog =>dog.temperament).includes(action.payload)
+        //     console.log(filterTemp)
+        //     return {
+        //     ...state,
+        //     temperaments: filterTemp //Brave..
+        //     };
         default: 
         return {...state}
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { filterDogsbyTemperament, getDogs,filterCreated, orderByName } from '../actions'
+import { filterDogsByTemperament,getDogs,filterCreated, orderByName,getTemperamentsList } from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import Pagination from './Pagination'
@@ -23,8 +23,10 @@ function Home() {
     }
 
     useEffect(()=>{    // Se ejecuta cuando el componente se monta y se actualiza si se le pasa alguna dependencia
-        dispatch(getDogs())
-    },[])
+        dispatch(getDogs());
+        dispatch(getTemperamentsList());
+
+    },[dispatch])
 
     const handleClick = (e)=>{        //VUELVE A CARGAR LOS PERROS.
         e.preventDefault()
@@ -38,13 +40,28 @@ function Home() {
         dispatch(filterCreated(e.target.value))
     }
 
-
+//sort ASC-DESC
     const handleSort=(e)=>{
         e.preventDefault();
         dispatch(orderByName(e.target.value))
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`)
     }
+
+// FILTER TEMPERAMENTS//
+const temperaments = useSelector((state) => state.temperaments)
+.sort(
+    function (a, b) {
+    if (a < b) return -1;
+    else return 1;
+    }
+);
+
+function handleFilteredByTemp(e) {
+    e.preventDefault();
+    dispatch(filterDogsByTemperament(e.target.value));
+    
+}
 
     return (
         <div>
@@ -65,13 +82,15 @@ function Home() {
                 </select>
 
                 {/* onChange={e =>handleFilterTemperament(e)} */}
-                <select>
-                    <option value='All'>Todos</option>
-                    <option value='Brave'>Valiente</option>
-                    <option value='Happy'>Feliz</option>
-                    <option value='Friendly'>Amigable</option>
-                    <option value='Loyal'>Lealtad</option>
-                    <option value='Obedient'>Obediente</option>
+                <select onChange={(e) => handleFilteredByTemp(e)}>
+                    <option value="all">Todos</option>
+                    {temperaments.map((temp) => {
+                    return (
+                    <option value={temp} key={temp}>
+                    {temp}
+                    </option>
+                    );
+                    })}
                 </select>
 
                 <select>
