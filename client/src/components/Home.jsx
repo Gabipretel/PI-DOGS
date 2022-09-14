@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { getDogs } from '../actions'
+import { filterDogsbyTemperament, getDogs,filterCreated } from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import Pagination from './Pagination'
@@ -28,6 +28,14 @@ function Home() {
         e.preventDefault()
         dispatch(getDogs())
     }
+        //filtro por temperamentos
+    // const handleFilterTemperament= (e)=>{
+    //     dispatch(filterDogsbyTemperament(e.target.value))
+    // }
+     const handleFilterCreated= (e)=>{
+        dispatch(filterCreated(e.target.value))
+    }
+
     return (
         <div>
             <Link to='/character'>Crea tu Mascota</Link>
@@ -39,14 +47,25 @@ function Home() {
                     <option value="asc">Ascendente</option>
                     <option value="desc">Descendente</option>
                 </select>
-                <select>
-                    <option value='All'>Todos</option>
+                
+                <select onChange={e =>handleFilterCreated(e)}>
+                    <option value='all'>Todos</option>
                     <option value='created'>Creados</option>
                     <option value='api'>Existentes</option>
                 </select>
+
+                {/* onChange={e =>handleFilterTemperament(e)} */}
                 <select>
-                    <option value='Raza'>Temperamento</option>
-                    <option value='created'>Razas</option>
+                    <option value='All'>Todos</option>
+                    <option value='Brave'>Valiente</option>
+                    <option value='Happy'>Feliz</option>
+                    <option value='Friendly'>Amigable</option>
+                    <option value='Loyal'>Lealtad</option>
+                    <option value='Obedient'>Obediente</option>
+                </select>
+
+                <select>
+                    <option value='breeds'>Razas</option>
                 </select>
                 
                 <Pagination

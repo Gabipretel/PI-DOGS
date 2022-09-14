@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DOGS } from "./actions";
+import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED } from "./actions";
 
 export function getDogs(){
     return async function(dispatch){
@@ -10,12 +10,16 @@ export function getDogs(){
         })
     }
 }
-
-export function filterDogsbyStatus(payload){
-    return {
-        type: 'FILTER_BY_STATUS',
+// NO FUNCIONA..ARREGLAR
+// export function filterDogsbyTemperament(payload){
+//     return {
+//         type: FILTER_BY_TEMPERAMENT,
+//         payload
+//     }
+// }
+export function filterCreated(payload){
+    return{
+        type:'FILTER_CREATED',
         payload
     }
 }
-
-
