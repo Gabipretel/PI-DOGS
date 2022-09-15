@@ -1,4 +1,4 @@
-import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP, ORDER_BY_WEIGHT } from "../actions/actions"
+import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP, ORDER_BY_WEIGHT,GET_NAME_DOGS } from "../actions/actions"
 const initialState= {
     dogs :[],
     alldogs:[], // ver xq no va el = y el visual me pone el :
@@ -81,7 +81,12 @@ function rootReducer (state= initialState, action){
                     ...state,
                     dogs: dogsOrderByWeigth
                 }
-
+                
+        case GET_NAME_DOGS:
+            return{
+                ...state,
+                dogs: action.payload
+            }
 
 
 

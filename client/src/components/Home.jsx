@@ -5,6 +5,7 @@ import { filterDogsByTemperament,getDogs,filterCreated, orderByName,getTemperame
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import Pagination from './Pagination'
+import SearchBar from './SearchBar'
 
 function Home() {
     const dispatch = useDispatch(); //reemplaza a la fn mapDispatchToProps.
@@ -98,7 +99,7 @@ const handleOrderByWeight = (e)=>{
                 <select defaultValue='title' onChange={(e) => handleFilteredByTemp(e)}>
                 <option value="title" selected={selected} disabled>
                     Filtrar por Temp
-                  </option>
+                </option>
                     {temperaments.map((temp) => {
                     return (
                     <option value={temp} key={temp}>
@@ -111,7 +112,7 @@ const handleOrderByWeight = (e)=>{
                 <select defaultValue='title' onChange={e =>handleOrderByWeight(e)} >
                 <option value="title" selected={selected} disabled>
                     Filtrar por Peso
-                  </option>
+                </option>
                     <option value='heavy'>Lo más Grandotes</option>
                     <option value='weak'>Lo más Chicos</option>
                 </select>
@@ -121,6 +122,8 @@ const handleOrderByWeight = (e)=>{
                 allDogs={allDogs.length}  // useSelector -->state.dogs
                 paginado={paginado} // function de paginacion
                 />
+                
+                <SearchBar/>   
 
                 {
                     currentDogs && currentDogs.map((d)=>{

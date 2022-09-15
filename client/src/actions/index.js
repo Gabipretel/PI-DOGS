@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DOGS,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP,ORDER_BY_WEIGHT} from "./actions";
+import { GET_DOGS,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP,ORDER_BY_WEIGHT,GET_NAME_DOGS} from "./actions";
 
 export function getDogs(){
     return async function(dispatch){
@@ -56,4 +56,19 @@ export function filterDogsByTemperament(payload) { //OPTION: Brave..
         type: GET_DOGS_BY_TEMP,
         payload
         };
+}
+
+//BUSCO DOG POR QUERY //
+export function getNameDog (name){
+    return async function(dispatch){
+        try {
+            let json= await axios.get(`http://localhost:3001/dogs?name=${name}`)
+            return dispatch({
+                type: GET_NAME_DOGS,
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
