@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DOGS,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP} from "./actions";
+import { GET_DOGS,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP,ORDER_BY_WEIGHT} from "./actions";
 
 export function getDogs(){
     return async function(dispatch){
@@ -26,6 +26,14 @@ export function filterCreated(payload){
 export function orderByName(payload){
     return{
         type:ORDER_BY_NAME,
+        payload
+    }
+}
+
+//FILTRO POR PESO//
+export function orderByWeight(payload){ //value del select(weight)
+    return{
+        type:ORDER_BY_WEIGHT,
         payload
     }
 }

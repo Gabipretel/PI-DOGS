@@ -1,4 +1,4 @@
-import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP } from "../actions/actions"
+import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP, ORDER_BY_WEIGHT } from "../actions/actions"
 const initialState= {
     dogs :[],
     alldogs:[], // ver xq no va el = y el visual me pone el :
@@ -49,6 +49,46 @@ function rootReducer (state= initialState, action){
                     ...state,
                     temperaments: action.payload,
                     };
+
+        case ORDER_BY_WEIGHT:
+            const dogsOrderByWeigth = action.payload === 'weak' ? 
+            state.dogs.sort(function (a, b) {
+                if (a.weight_max === null) {
+                    return 0;
+                }
+                if (a.weight_max > b.weight_max) {
+                    return 1;
+                }
+                if (a.weight_max < b.weight_max) {
+                    return -1;
+                }
+                return 0;
+                }) :
+
+                state.dogs.sort(function (a, b) {
+                    if (a.weight_max === null) {
+                        return 0;
+                    }
+                    if (a.weight_max< b.weight_max) {
+                        return 1;
+                    }
+                    if (a.weight_max> b.weight_max) {
+                        return -1;
+                    }
+                    return 0;
+                })
+                return{
+                    ...state,
+                    dogs: dogsOrderByWeigth
+                }
+
+
+
+
+
+
+
+
             // ARREGLAR NO FUNCIONA
         // case FILTER_BY_TEMPERAMENT:
         //     const allDogs = state.dogs

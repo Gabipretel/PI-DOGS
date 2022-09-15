@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { filterDogsByTemperament,getDogs,filterCreated, orderByName,getTemperamentsList } from '../actions'
+import { filterDogsByTemperament,getDogs,filterCreated, orderByName,getTemperamentsList, orderByWeight} from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import Pagination from './Pagination'
@@ -17,7 +17,7 @@ function Home() {
     const currentDogs= allDogs.slice(firstDog,lastDog) // indice 0 hasta el 5.
     //-----//
     const [orden, setOrden] = useState('')
-    
+    const [selected, setSelected]= useState(false)
     const paginado = (pageNumber)=>{
         setCurrentPage(pageNumber)
     }
@@ -62,6 +62,13 @@ function handleFilteredByTemp(e) {
     dispatch(filterDogsByTemperament(e.target.value));
     
 }
+//FILTER ORDER BY PESO//
+const handleOrderByWeight = (e)=>{
+    dispatch(orderByWeight(e.target.value)) 
+    setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value}`)
+    //
+}
 
     return (
         <div>
@@ -70,20 +77,28 @@ function handleFilteredByTemp(e) {
             <button onClick={e =>{handleClick(e)}}>Volvé a cargar las mascotas</button>
 
             <div>
-                <select onChange={e =>handleSort(e)}>
+                <select defaultValue='title'onChange={e =>handleSort(e)}>
+                <option value="title" selected={selected} disabled>
+                    Filtrar por Abecedario
+                  </option>
                     <option value="asc">Ascendente A-Z</option>
                     <option value="desc">Descendente Z-A</option>
                 </select>
                 
-                <select onChange={e =>handleFilterCreated(e)}>
+                <select defaultValue='title' onChange={e =>handleFilterCreated(e)}>
+                    <option value="title" selected={selected} disabled>
+                    Filtrar por Origen
+                  </option>
                     <option value='all'>Todos</option>
                     <option value='created'>Creados</option>
                     <option value='api'>Existentes</option>
                 </select>
 
-                {/* onChange={e =>handleFilterTemperament(e)} */}
-                <select onChange={(e) => handleFilteredByTemp(e)}>
-                    <option value="all">Todos</option>
+                {/* onChange={e =>handleFilterTemperament(e)}  falta arreglar.*/} 
+                <select defaultValue='title' onChange={(e) => handleFilteredByTemp(e)}>
+                <option value="title" selected={selected} disabled>
+                    Filtrar por Temp
+                  </option>
                     {temperaments.map((temp) => {
                     return (
                     <option value={temp} key={temp}>
@@ -93,8 +108,12 @@ function handleFilteredByTemp(e) {
                     })}
                 </select>
 
-                <select>
-                    <option value='breeds'>Razas</option>
+                <select defaultValue='title' onChange={e =>handleOrderByWeight(e)} >
+                <option value="title" selected={selected} disabled>
+                    Filtrar por Peso
+                  </option>
+                    <option value='heavy'>Lo más Grandotes</option>
+                    <option value='weak'>Lo más Chicos</option>
                 </select>
                 
                 <Pagination
