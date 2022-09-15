@@ -73,7 +73,7 @@ const handleOrderByWeight = (e)=>{
 
     return (
         <div>
-            <Link to='/character'>Crea tu Mascota</Link>
+            <Link to='/dog'>Crea tu Mascota</Link>
             <h1>Mascota IT</h1>
             <button onClick={e =>{handleClick(e)}}>Volvé a cargar las mascotas</button>
 
