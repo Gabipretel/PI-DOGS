@@ -128,6 +128,7 @@ const handleOrderByWeight = (e)=>{
 
                 {
                     currentDogs && currentDogs.map((d)=>{
+                        console.log(currentDogs)
                         return(
                             <>
                             <Link to={`/home/${d.id}`}>

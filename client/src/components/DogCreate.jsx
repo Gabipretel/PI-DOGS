@@ -45,7 +45,7 @@ function handleSubmit(e){
     setInput({
     image:'',
     name: '',
-    temperament:[],
+    temperament:[], 
     height_min:'',
     height_max:'',
     weight_min:'',
@@ -53,6 +53,13 @@ function handleSubmit(e){
     life_span:'',
     })
     history.push('/home')
+}
+
+function handleDelete(del) {
+    setInput({
+    ...input,
+    temperament: input.temperament.filter((temp) => temp !== del),
+    });
 }
 
 return (
@@ -154,7 +161,15 @@ return (
             <button>Click aqui para crear</button>
             </div>
             
+            
         </form>
+        {input.temperament.map(elem=>
+            <div>
+                <p>{elem}</p>
+                <button onClick={()=>handleDelete(elem)}>X</button>
+            </div>
+    )}
+
     </div>
 )
 }
