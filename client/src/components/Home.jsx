@@ -1,11 +1,12 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { filterDogsByTemperament,getDogs,filterCreated, orderByName,getTemperamentsList, orderByWeight} from '../actions'
+import { getDogs,filterCreated, orderByName,getTemperamentsList, orderByWeight} from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import Pagination from './Pagination'
 import SearchBar from './SearchBar'
+import imagen from './img/dograndom.jpg'
 
 function Home() {
     const dispatch = useDispatch(); //reemplaza a la fn mapDispatchToProps.
@@ -58,11 +59,11 @@ const temperaments = useSelector((state) => state.temperaments)
     }
 );
 
-function handleFilteredByTemp(e) {
-    e.preventDefault();
-    dispatch(filterDogsByTemperament(e.target.value));
+// function handleFilteredByTemp(e) {
+//     e.preventDefault();
+//     dispatch(filterDogsByTemperament(e.target.value));
     
-}
+// }
 //FILTER ORDER BY PESO//
 const handleOrderByWeight = (e)=>{
     dispatch(orderByWeight(e.target.value)) 
@@ -95,8 +96,8 @@ const handleOrderByWeight = (e)=>{
                     <option value='api'>Existentes</option>
                 </select>
 
-                {/* onChange={e =>handleFilterTemperament(e)}  falta arreglar.*/} 
-                <select defaultValue='title' onChange={(e) => handleFilteredByTemp(e)}>
+                {/* onChange={e =>handleFilterTemperament(e)}  falta arreglar. onChange={(e) => handleFilteredByTemp(e)} */}
+                <select defaultValue='title'>         
                 <option value="title" selected={selected} disabled>
                     Filtrar por Temp
                 </option>

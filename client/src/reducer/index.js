@@ -1,8 +1,9 @@
-import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP, ORDER_BY_WEIGHT,GET_NAME_DOGS } from "../actions/actions"
+import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP, ORDER_BY_WEIGHT,GET_NAME_DOGS, GET_TEMPERAMENTS } from "../actions/actions"
 const initialState= {
     dogs :[],
     alldogs:[], // ver xq no va el = y el visual me pone el :
-    temperaments:[] 
+    temperaments:[], 
+    createtemperaments:[]
 }
 function rootReducer (state= initialState, action){
     switch (action.type) {     //if (action.type === 'GET_DOGS') return ...state, dogs:action.payload
@@ -87,16 +88,22 @@ function rootReducer (state= initialState, action){
                 ...state,
                 dogs: action.payload
             }
+        case "POST_DOG":
+            return{
+                ...state,
+            }
 
-
-
-
+        case GET_TEMPERAMENTS:
+            return{
+                ...state,
+                createtemperaments: action.payload
+            }   
 
 
 
             // ARREGLAR NO FUNCIONA
         // case FILTER_BY_TEMPERAMENT:
-        //     const allDogs = state.dogs
+        //     const allDogs = state.dogs // 
         //     const statusFiltered= action.payload === 'All' ? allDogs : allDogs.filter(dog =>dog.temperament === action.payload )
         //     return{
         //         ...state,
