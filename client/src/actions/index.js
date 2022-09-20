@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DOGS,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP,ORDER_BY_WEIGHT,GET_NAME_DOGS,GET_TEMPERAMENTS} from "./actions";
+import { GET_DOGS,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP,ORDER_BY_WEIGHT,GET_NAME_DOGS,GET_TEMPERAMENTS,GET_DOG_CREATE} from "./actions";
 
 //Trae los perros
 export function getDogs(){
@@ -38,8 +38,8 @@ export function orderByWeight(payload){ //value del select(weight)
 //FILTER TEMPERAMENT-TRAE LOS TEMPERAMENTOS Y CARGA EL STATE.TEMPERAMENTS//
 export function getTemperamentsList() {
     return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/temperaments");
-      var listOfTemperaments = json.data.map((el) => el.name);     //[valiente,fuerte,]
+    let json = await axios.get("http://localhost:3001/temperaments");
+      let listOfTemperaments = json.data.map((el) => el.name);     //[valiente,fuerte,]
     return dispatch({
         type: GET_TEMPERAMENTS_LIST,
         payload: listOfTemperaments,
@@ -71,7 +71,7 @@ export function getNameDog (name){
 
 //GET TEMPERAMENTS PARA CREAR EL DOG/RAZA
 export function getTemperaments(){
-    return async function(dispatch){
+    return async function(dispatch){ 
         let info= await axios.get('http://localhost:3001/temperaments');
         return dispatch({type: GET_TEMPERAMENTS ,payload: info.data});
 
@@ -84,5 +84,19 @@ export function postDog(payload){
         const info = await axios.post('http://localhost:3001/dogs',payload)
         console.log(info)
         return info
+    }
+}
+// GET DETAILS//
+export function getDogCreate (id){
+    return async function(dispatch){
+        try {
+            let json= await axios.get()
+            return dispatch({
+                type: 'GET_DOG_CREATE',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

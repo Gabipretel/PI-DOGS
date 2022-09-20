@@ -8,6 +8,7 @@ import Pagination from './Pagination'
 import SearchBar from './SearchBar'
 import imagen from './img/dograndom.jpg'
 
+
 function Home() {
     const dispatch = useDispatch(); //reemplaza a la fn mapDispatchToProps.
     const allDogs= useSelector((state) => state.dogs) //reemplaza el mapStateToProps.

@@ -10,5 +10,7 @@ sequelize.define('temperament', {
     },
 },{
     timestamps: false,
+    // tableName: 'temperament', name: { singular:'temperament', plural: 'temperament' }
+
   });
 };

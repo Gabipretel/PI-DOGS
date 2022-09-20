@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import fondo from './styles/LandingPage.module.css'
 function LandingPage() {
     return (
         <div>

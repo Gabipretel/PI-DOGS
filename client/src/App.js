@@ -13,11 +13,10 @@ function App() {
                 <Route path='/home' component={Home}/>
                 <Route path='/dog' component={DogCreate}/>
                 <Route path='/home/:id' component={DogDetail}/>
-
             </Switch>
         </div>
     </Router>
-  );
+  )
 }
 
 export default App;

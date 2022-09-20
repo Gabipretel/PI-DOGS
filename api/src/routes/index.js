@@ -98,6 +98,7 @@ router.get("/temperaments", async (req, res) => {
         }
     });
         eachTemperament = await Temperament.findAll();
+        // console.log(eachTemperament)
     res.status(200).json(eachTemperament);
     } catch (error) {
     res.status(404).send(error);
