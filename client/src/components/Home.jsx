@@ -136,7 +136,7 @@ const handleOrderByWeight = (e)=>{
                             key={d.id}
                             name={d.name} 
                             image={d.image}
-                            temperament={d.createdInDB ? d.temperaments.map(t=>t.name+ ' ') : d.temperament.split(',').join(' ')} 
+                            temperament={d.createdInDB ? d.temperaments.map(t=>t.name+ ', ') : d.temperament +' '} 
                             weight_min={d.weight_min}
                             weight_max={d.weight_max}
                             />

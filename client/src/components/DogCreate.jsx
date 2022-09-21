@@ -5,11 +5,61 @@ import {useDispatch,useSelector} from 'react-redux'
 // importar getTemperaments crearla..
 //postDogs//
 
+//FUNCION VALIDADORA DE FORMULARIO.
+   //IMG  // /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url)
+// PARA NAME // /^[a-zA-Z]{1,10}$/.test(name)
+// Debo terminarlo...
+function validateForm(input){
+    let errors= {};
+    if(!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(input.image)) {
+        errors.image= 'Se requiere una URL de tipo jpg,jpeg,webp,avif,gif,svg, Aviso: de no ser provista tendra una por defecto'
+
+    }else if(!/((?=.*_)^[a-zA-Z_\s]{1,19}[a-zA-Z]$)|((?!.*_)^[a-zA-Z\s]{1,20}$)/.test(input.name)){ 
+        errors.name= 'Se requiere un nombre';
+
+    }else if(!/^[1-9][0-9]?$|^15$/.test(input.height_min)) { 
+        errors.height_min= 'Se requiere una altura mínima de 15cm'
+
+    }else if(!/^[1-9][0-9]?$|^115$/.test(input.height_max)) {
+        errors.height_max= 'Se requiere una altura máximo'
+
+    }else if(!/^[1-9][0-9]?$|^115$/.test(input.weight_min)) {
+        errors.weight_min= 'Se requiere un peso mínimo'
+
+    }else if(!input.weight_max) {
+        errors.weight_max= 'Se requiere un peso máximo'
+        
+    }else if(!input.life_span) {
+        errors.life_span= 'Se requiere un numero'
+    }
+    return errors
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function DogCreate() {
   // ESTO ESTA ROMPIENDO
 const dispatch= useDispatch();
 const history= useHistory();
 const temperaments = useSelector((state)=> state.temperaments)
+const [errors,setErrors] = useState({});
+
 const [input, setInput] = useState({
     image:'',
     name: '',
@@ -29,6 +79,11 @@ function handleChange(e){
     ...input,
     [e.target.name]: e.target.value
     })
+    setErrors(validateForm({
+        ...input,
+        [e.target.name]: e.target.value
+    }))
+    console.log(input)
 }
 
 function handleSelect(e){
@@ -76,18 +131,22 @@ return (
             type='url'
             value={input.image}
             name='image'
+            placeholder='Escriba una URL'
             onChange={handleChange}
             />
-            
+            {errors.image && <p className='error'>{errors.image}</p>}
             </div>
+
             <div>
             <label>Nombre:</label>
             <input
             type='text'
             value={input.name}
             name='name'
+            placeholder='Ingrese un nombre'
             onChange={handleChange}
             />
+            {errors.name && <p className='error'>{errors.name}</p>}
             </div>
 
             <div>
@@ -96,9 +155,10 @@ return (
             type='number'
             value={input.height_min}
             name='height_min'
+            placeholder='Ingrese una altura min'
             onChange={handleChange}
             />
-
+            {errors.height_min && <p className='error'>{errors.height_min}</p>}
             </div>
 
             <div>
@@ -107,9 +167,10 @@ return (
             type='number'
             value={input.height_max}
             name='height_max'
+            placeholder='Ingrese una altura max'
             onChange={handleChange}
             />
-
+            {errors.height_max && <p className='error'>{errors.height_max}</p>}
             </div>
 
             <div>
@@ -118,9 +179,10 @@ return (
             type='number'
             value={input.weight_min}
             name='weight_min'
+            placeholder='Ingrese un peso min'
             onChange={handleChange}
             />
-
+            {errors.weight_min && <p className='error'>{errors.weight_min}</p>}
             </div>
 
             <div>
@@ -129,9 +191,10 @@ return (
             type='number'
             value={input.weight_max}
             name='weight_max'
+            placeholder='Ingrese un peso max'
             onChange={handleChange}
             />
-
+            {errors.weight_max && <p className='error'>{errors.weight_max}</p>}
             </div>
 
             <div>
@@ -140,8 +203,10 @@ return (
             type='number'
             value={input.life_span}
             name='life_span'
+            placeholder='Ingrese años de vida'
             onChange={handleChange}
             />
+            {errors.life_span && <p className='error'>{errors.life_span}</p>}
             </div>
 
             <div>
