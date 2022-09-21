@@ -18,7 +18,6 @@ function DogDetail(props) {
 const dogdetails= useSelector((state)=> state.dogdetails)
   return (
     <div>
-      AQUI SE VA PONER EL DETALLE DEL PERRO 
       {
         dogdetails.length > 0 ? 
         <div>
