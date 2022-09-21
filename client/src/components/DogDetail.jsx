@@ -23,7 +23,7 @@ const dogdetails= useSelector((state)=> state.dogdetails)
         <div>
           <img src={dogdetails[0].image} alt='no found' width='400px' height='300px' />
           <h1>Raza{' '} {dogdetails[0].name}</h1>
-          <h3>Temperamento{' '}{dogdetails[0].createdInDB ? dogdetails[0].temperaments.map(t=>t.name+ ' ') :dogdetails[0].temperament+ ' ' }</h3>
+          <h3>Temperamento{' '}{dogdetails[0].createdInDB ? dogdetails[0].temperaments.map(t=>t.name+ ' ') :dogdetails[0].temperament.split(',').join(' ')+ ' ' }</h3>
           <h3>Altura mínima {' '} {dogdetails[0].height_min}</h3>
           <h3>Altura máxima {' '} {dogdetails[0].height_max}</h3>
           <h3>Peso mínimo{' '} {dogdetails[0].weight_min}</h3>
