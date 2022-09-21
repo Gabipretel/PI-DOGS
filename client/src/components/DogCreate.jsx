@@ -69,7 +69,8 @@ return (
         <h1>Crea tu raza de Perro</h1>
         <h3>Agregar IMG eso falta.</h3>
         <form onSubmit={handleSubmit}>
-        <div>
+
+            <div>
             <label>Imagen:</label>
             <input
             type='url'
@@ -77,8 +78,8 @@ return (
             name='image'
             onChange={handleChange}
             />
+            
             </div>
-
             <div>
             <label>Nombre:</label>
             <input

@@ -12,11 +12,11 @@ function App() {
                 <Route exact path='/' component={LandingPage}/>
                 <Route path='/home' component={Home}/>
                 <Route path='/dog' component={DogCreate}/>
-                <Route path='/home/:id' component={DogDetail}/>
+                <Route path='/dogdetail/:id' component={DogDetail}/>
             </Switch>
         </div>
     </Router>
   )
 }
 
-export default App;
+export default App

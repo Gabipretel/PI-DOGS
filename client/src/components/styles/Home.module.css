@@ -1,5 +1,5 @@
-html,body{
-    background-image: url('../img/peakpx.jpg');
-    background-repeat: no-repeat;
-
+.homeBackground{
+background: #7dd085;
+background-repeat:no-repeat;
+background-size: cover;
 }

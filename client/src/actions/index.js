@@ -1,5 +1,15 @@
 import axios from "axios";
-import { GET_DOGS,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP,ORDER_BY_WEIGHT,GET_NAME_DOGS,GET_TEMPERAMENTS,GET_DOG_CREATE} from "./actions";
+import { 
+    GET_DOGS,
+    FILTER_CREATED,
+    ORDER_BY_NAME,
+    GET_TEMPERAMENTS_LIST,
+    GET_DOGS_BY_TEMP,
+    ORDER_BY_WEIGHT,
+    GET_NAME_DOGS,
+    GET_TEMPERAMENTS,
+    GET_DOG_DETAIL
+} from "./actions";
 
 //Trae los perros
 export function getDogs(){
@@ -74,7 +84,6 @@ export function getTemperaments(){
     return async function(dispatch){ 
         let info= await axios.get('http://localhost:3001/temperaments');
         return dispatch({type: GET_TEMPERAMENTS ,payload: info.data});
-
     }
 }
 
@@ -87,12 +96,12 @@ export function postDog(payload){
     }
 }
 // GET DETAILS//
-export function getDogCreate (id){
+export function getDogDetails(id){
     return async function(dispatch){
         try {
-            let json= await axios.get()
+            let json= await axios.get(`http://localhost:3001/dogs/${id}`)
             return dispatch({
-                type: 'GET_DOG_CREATE',
+                type: GET_DOG_DETAIL,
                 payload: json.data
             })
         } catch (error) {

@@ -6,8 +6,7 @@ import {Link} from 'react-router-dom'
 import Card from './Card'
 import Pagination from './Pagination'
 import SearchBar from './SearchBar'
-import imagen from './img/dograndom.jpg'
-
+import styles from './styles/Home.module.css'
 
 function Home() {
     const dispatch = useDispatch(); //reemplaza a la fn mapDispatchToProps.
@@ -74,7 +73,7 @@ const handleOrderByWeight = (e)=>{
 }
 
     return (
-        <div>
+        <div className={styles.homeBackground}>
             <Link to='/dog'>Crea tu Mascota</Link>
             <h1>Mascota IT</h1>
             <button onClick={e =>{handleClick(e)}}>Volvé a cargar las mascotas</button>
@@ -126,18 +125,18 @@ const handleOrderByWeight = (e)=>{
                 />
                 
                 <SearchBar/>   
-
+                    
                 {
                     currentDogs && currentDogs.map((d)=>{
                         console.log(currentDogs)
                         return(
                             <>
-                            <Link to={`/home/${d.id}`}>
+                            <Link to={`/dogdetail/${d.id}`}>
                             <Card
                             key={d.id}
                             name={d.name} 
                             image={d.image}
-                            temperament={d.temperament} 
+                            temperament={d.createdInDB ? d.temperaments.map(t=>t.name+ ' ') : d.temperament+ ' ' } 
                             weight_min={d.weight_min}
                             weight_max={d.weight_max}
                             />

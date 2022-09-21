@@ -1,9 +1,10 @@
-import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP, ORDER_BY_WEIGHT,GET_NAME_DOGS, GET_TEMPERAMENTS } from "../actions/actions"
+import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP, ORDER_BY_WEIGHT,GET_NAME_DOGS, GET_TEMPERAMENTS, GET_DOG_DETAIL } from "../actions/actions"
 const initialState= {
     dogs :[],
     alldogs:[], // ver xq no va el = y el visual me pone el :
     temperaments:[], 
-    createtemperaments:[]
+    createtemperaments:[],
+    dogdetails:[]
 }
 function rootReducer (state= initialState, action){
     switch (action.type) {     //if (action.type === 'GET_DOGS') return ...state, dogs:action.payload
@@ -98,7 +99,11 @@ function rootReducer (state= initialState, action){
                 ...state,
                 createtemperaments: action.payload
             }   
-
+        case GET_DOG_DETAIL:
+            return{
+                ...state,
+                dogdetails: action.payload
+            }
 
 
             // ARREGLAR NO FUNCIONA

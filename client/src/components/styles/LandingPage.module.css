@@ -1,5 +1,9 @@
-html{
-background-image: url("../img/goldens.jpg");
+.landingBackground{
+background-image: url("../img/dalmata.jpg");
 background-repeat:no-repeat;
+background-size: cover;
+height: 100vh;
+display: flex;
+flex-direction: column;
 
 }
