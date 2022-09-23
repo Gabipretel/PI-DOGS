@@ -4,10 +4,9 @@ import {
     FILTER_CREATED,
     ORDER_BY_NAME,
     GET_TEMPERAMENTS_LIST,
-    GET_DOGS_BY_TEMP,
+    FILTER_BY_TEMPERAMENT,
     ORDER_BY_WEIGHT,
     GET_NAME_DOGS,
-    GET_TEMPERAMENTS,
     GET_DOG_DETAIL
 } from "./actions";
 
@@ -49,20 +48,20 @@ export function orderByWeight(payload){ //value del select(weight)
 export function getTemperamentsList() {
     return async function (dispatch) {
     let json = await axios.get("http://localhost:3001/temperaments");
-      let listOfTemperaments = json.data.map((el) => el.name);     //[valiente,fuerte,]
+      let listOfTemperaments = json.data.map((el) => el.name);     //[valiente,fuerte,] = ['valiente','egoista'].sort(egosta,valiente)
     return dispatch({
         type: GET_TEMPERAMENTS_LIST,
         payload: listOfTemperaments,
     });
     ;}
 }
-//FILTRO DE TEMPERAMENTOS PPIAMENTE DICHO// NO FUNCIONA
-// export function filterDogsByTemperament(payload) { //OPTION: Brave..
-//         return {
-//         type: GET_DOGS_BY_TEMP,
-//         payload
-//         };
-// }
+// FILTRO DE TEMPERAMENTOS PPIAMENTE DICHO//
+export function filterDogsByTemperament(payload) { 
+        return {
+        type: FILTER_BY_TEMPERAMENT,
+        payload
+        };
+}
 
 //BUSCO DOG POR QUERY // PARA EL SEARCH BAR
 export function getNameDog (name){
@@ -76,14 +75,6 @@ export function getNameDog (name){
         } catch (error) {
             console.log(error)
         }
-    }
-}
-
-//GET TEMPERAMENTS PARA CREAR EL DOG/RAZA
-export function getTemperaments(){
-    return async function(dispatch){ 
-        let info= await axios.get('http://localhost:3001/temperaments');
-        return dispatch({type: GET_TEMPERAMENTS ,payload: info.data});
     }
 }
 

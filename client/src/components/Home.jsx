@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { getDogs,filterCreated, orderByName,getTemperamentsList, orderByWeight} from '../actions'
+import { getDogs,filterCreated, orderByName,getTemperamentsList, orderByWeight,filterDogsByTemperament} from '../actions'
 import {Link} from 'react-router-dom'
 import Card from './Card'
 import Pagination from './Pagination'
@@ -34,10 +34,12 @@ function Home() {
         e.preventDefault()
         dispatch(getDogs())
     }
-        //filtro por temperamentos
-    // const handleFilterTemperament= (e)=>{
-    //     dispatch(filterDogsbyTemperament(e.target.value))
-    // }
+        // filtro por temperamentos
+    const handleFilterTemperament= (e)=>{
+        dispatch(filterDogsByTemperament(e.target.value))
+        setCurrentPage(1);
+        
+    }
      const handleFilterCreated= (e)=>{
         dispatch(filterCreated(e.target.value))
     }
@@ -59,11 +61,6 @@ const temperaments = useSelector((state) => state.temperaments)
     }
 );
 
-// function handleFilteredByTemp(e) {
-//     e.preventDefault();
-//     dispatch(filterDogsByTemperament(e.target.value));
-    
-// }
 //FILTER ORDER BY PESO//
 const handleOrderByWeight = (e)=>{
     dispatch(orderByWeight(e.target.value)) 
@@ -90,16 +87,16 @@ const handleOrderByWeight = (e)=>{
                 <select defaultValue='title' onChange={e =>handleFilterCreated(e)}>
                     <option value="title" selected={selected} disabled>
                     Filtrar por Origen
-                  </option>
+                </option>
                     <option value='all'>Todos</option>
                     <option value='created'>Creados</option>
                     <option value='api'>Existentes</option>
                 </select>
 
-                {/* onChange={e =>handleFilterTemperament(e)}  falta arreglar. onChange={(e) => handleFilteredByTemp(e)} */}
-                <select defaultValue='title'>         
-                <option value="title" selected={selected} disabled>
-                    Filtrar por Temp
+                {/*   falta arreglar. onChange={(e) => handleFilteredByTemp(e)} */}
+                <select onChange={e =>handleFilterTemperament(e)}>         
+                <option value="all">
+                    Todos los temperamentos
                 </option>
                     {temperaments.map((temp) => {
                     return (

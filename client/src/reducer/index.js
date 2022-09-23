@@ -1,9 +1,15 @@
-import { GET_DOGS,FILTER_BY_TEMPERAMENT,FILTER_CREATED,ORDER_BY_NAME,GET_TEMPERAMENTS_LIST,GET_DOGS_BY_TEMP, ORDER_BY_WEIGHT,GET_NAME_DOGS, GET_TEMPERAMENTS, GET_DOG_DETAIL } from "../actions/actions"
+import { GET_DOGS,
+    FILTER_BY_TEMPERAMENT,
+    FILTER_CREATED,
+    ORDER_BY_NAME,
+    GET_TEMPERAMENTS_LIST, 
+    ORDER_BY_WEIGHT,
+    GET_NAME_DOGS,
+    GET_DOG_DETAIL } from "../actions/actions"
 const initialState= {
     dogs :[],
-    alldogs:[], // ver xq no va el = y el visual me pone el :
+    alldogs:[], 
     temperaments:[], 
-    createtemperaments:[],
     dogdetails:[]
 }
 function rootReducer (state= initialState, action){
@@ -93,12 +99,6 @@ function rootReducer (state= initialState, action){
             return{
                 ...state,
             }
-
-        case GET_TEMPERAMENTS:
-            return{
-                ...state,
-                createtemperaments: action.payload
-            }   
         case GET_DOG_DETAIL:
             return{
                 ...state,
@@ -106,24 +106,21 @@ function rootReducer (state= initialState, action){
             }
 
 
-            // ARREGLAR NO FUNCIONA
-        // case FILTER_BY_TEMPERAMENT:
-        //     const allDogs = state.dogs // 
-        //     const statusFiltered= action.payload === 'All' ? allDogs : allDogs.filter(dog =>dog.temperament === action.payload )
-        //     return{
-        //         ...state,
-        //         dogs: statusFiltered
-        //     }
-
-        // case GET_DOGS_BY_TEMP: // ARREGLAR NO FUNCIONA
-         
-        //     const perros= state.alldogs
-        //     const filterTemp= action.payload === 'all' ? perros : perros.filter(dog =>dog.temperament).includes(action.payload)
-        //     console.log(filterTemp)
-        //     return {
-        //     ...state,
-        //     temperaments: filterTemp //Brave..
-        //     };
+       // ARREGLAR NO FUNCIONA
+        case FILTER_BY_TEMPERAMENT:
+            const perros= state.alldogs
+            const filteredTemperament = action.payload === 'all' ? perros : perros.filter(el => {
+                if (typeof (el.temperament) === 'string') return el.temperament.includes(action.payload);
+                if (Array.isArray(el.temperaments)) {
+                    let temps = el.temperaments.map(el => el.name);
+                    return temps.includes(action.payload);
+                }
+                return true;
+            });
+            return {
+            ...state,
+            dogs: filteredTemperament//Brave..
+            };
         default: 
         return {...state}
     }
