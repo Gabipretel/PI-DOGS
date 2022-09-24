@@ -110,10 +110,10 @@ function rootReducer (state= initialState, action){
         case FILTER_BY_TEMPERAMENT:
             const perros= state.alldogs
             const filteredTemperament = action.payload === 'all' ? perros : perros.filter(el => {
-                if (typeof (el.temperament) === 'string') return el.temperament.includes(action.payload);
+                if (typeof (el.temperament) === 'string') return el.temperament.includes(action.payload); //saca de la api la coincidencia
                 if (Array.isArray(el.temperaments)) {
-                    let temps = el.temperaments.map(el => el.name);
-                    return temps.includes(action.payload);
+                    let temps = el.temperaments.map(el => el.name); // temperamentos['valiente','egoista']
+                    return temps.includes(action.payload); 
                 }
                 return true;
             });

@@ -1,9 +1,43 @@
 .landingBackground{
-background-image: url("../img/dalmata.jpg");
+background-image: url("../img/peakpx.jpg");
 background-repeat:no-repeat;
 background-size: cover;
 height: 100vh;
 display: flex;
 flex-direction: column;
 
+}
+.title{
+    font-size: 26px;
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+
+}
+.btn {
+    margin-top: 2em;
+    background-color: #323737; 
+    color: white;
+    border-radius: 12px;
+    border: 2px solid #000000 ;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform:uppercase;
+    font-weight: bold;
+    
+}
+.btn {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.btn:hover {
+    background-color: #4CAF50; 
+    color: white;
 }

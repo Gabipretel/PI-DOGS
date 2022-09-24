@@ -4,10 +4,11 @@ import styles from './styles/LandingPage.module.css'
 function LandingPage() {
     return (
         <div className={styles.landingBackground}>
-            <h1>Encuentra tu Mascota ideal</h1>
+            <div className={styles.title}>Encuentra tu Mascota ideal
             <Link to='/home'>
-                <button>Ingrese Aquí 🐶</button>
+                <button className={styles.btn}>Ingrese Aquí 🐶</button>
             </Link>
+            </div>
         </div>
     )
 }

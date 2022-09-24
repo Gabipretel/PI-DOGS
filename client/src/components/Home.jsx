@@ -93,7 +93,6 @@ const handleOrderByWeight = (e)=>{
                     <option value='api'>Existentes</option>
                 </select>
 
-                {/*   falta arreglar. onChange={(e) => handleFilteredByTemp(e)} */}
                 <select onChange={e =>handleFilterTemperament(e)}>         
                 <option value="all">
                     Todos los temperamentos
