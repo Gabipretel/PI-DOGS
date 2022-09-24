@@ -8,8 +8,9 @@ flex-direction: column;
 
 }
 .title{
-    font-size: 26px;
+    font-size: 30px;
     text-transform: uppercase;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: black;
     font-weight: bold;
     margin-top: 2em;
@@ -19,10 +20,10 @@ flex-direction: column;
 }
 .btn {
     margin-top: 2em;
-    background-color: #323737; 
+    background-color:rgb(18, 112, 189); 
     color: white;
     border-radius: 12px;
-    border: 2px solid #000000 ;
+    /* border: 2px solid #000000 ; */
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -38,6 +39,6 @@ flex-direction: column;
 }
 
 .btn:hover {
-    background-color: #4CAF50; 
+    background-color: #49a549; 
     color: white;
 }

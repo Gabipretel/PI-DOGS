@@ -10,7 +10,8 @@ const initialState= {
     dogs :[],
     alldogs:[], 
     temperaments:[], 
-    dogdetails:[]
+    dogdetails:[],
+    loading:true
 }
 function rootReducer (state= initialState, action){
     switch (action.type) {     //if (action.type === 'GET_DOGS') return ...state, dogs:action.payload
@@ -18,7 +19,7 @@ function rootReducer (state= initialState, action){
             return{
                 ...state,
                 dogs: action.payload,
-                alldogs: action.payload ///[{}]
+                alldogs: action.payload 
             }
         case FILTER_CREATED:
             const getDogs = state.alldogs
@@ -106,7 +107,7 @@ function rootReducer (state= initialState, action){
             }
 
 
-       // ARREGLAR NO FUNCIONA
+    //FILTER BY TEMPERAMENT
         case FILTER_BY_TEMPERAMENT:
             const perros= state.alldogs
             const filteredTemperament = action.payload === 'all' ? perros : perros.filter(el => {

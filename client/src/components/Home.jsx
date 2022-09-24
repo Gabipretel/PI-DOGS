@@ -8,6 +8,7 @@ import Pagination from './Pagination'
 import SearchBar from './SearchBar'
 import styles from './styles/Home.module.css'
 
+
 function Home() {
     const dispatch = useDispatch(); //reemplaza a la fn mapDispatchToProps.
     const allDogs= useSelector((state) => state.dogs) //reemplaza el mapStateToProps.
@@ -23,6 +24,9 @@ function Home() {
     const paginado = (pageNumber)=>{
         setCurrentPage(pageNumber)
     }
+
+
+
 
     useEffect(()=>{    // Se ejecuta cuando el componente se monta y se actualiza si se le pasa alguna dependencia
         dispatch(getDogs());
@@ -72,7 +76,7 @@ const handleOrderByWeight = (e)=>{
     return (
         <div className={styles.homeBackground}>
             <Link to='/dog'>Crea tu Mascota</Link>
-            <h1>Mascota IT</h1>
+            <h1 className={styles.titlepage}>Mascota IT</h1>
             <button onClick={e =>{handleClick(e)}}>Volvé a cargar las mascotas</button>
 
             <div>
@@ -121,7 +125,7 @@ const handleOrderByWeight = (e)=>{
                 />
                 
                 <SearchBar/>   
-                    
+                
                 {
                     currentDogs && currentDogs.map((d)=>{
                         console.log(currentDogs)

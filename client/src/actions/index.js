@@ -10,6 +10,9 @@ import {
     GET_DOG_DETAIL
 } from "./actions";
 
+
+
+
 //Trae los perros
 export function getDogs(){
     return async function(dispatch){
@@ -18,6 +21,7 @@ export function getDogs(){
             type: GET_DOGS,
             payload:json.data
         })
+
     }
 }
 //FILTRA Por origen 
