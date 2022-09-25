@@ -125,14 +125,14 @@ const handleOrderByWeight = (e)=>{
                 />
                 
                 <SearchBar/>   
-                
+                <div className={styles.basicgrid}>
                 {
                     currentDogs && currentDogs.map((d)=>{
                         console.log(currentDogs)
                         return(
                             <>
-                            <Link to={`/dogdetail/${d.id}`}>
                             <Card
+                            id={d.id}
                             key={d.id}
                             name={d.name} 
                             image={d.image}
@@ -140,11 +140,11 @@ const handleOrderByWeight = (e)=>{
                             weight_min={d.weight_min}
                             weight_max={d.weight_max}
                             />
-                            </Link>
                             </>
                         )
                     })
                 }
+                </div>
             </div>
         </div>
     )
