@@ -1,28 +1,87 @@
-.img_conteiner{
-    height: 300px;
+.card{
+    position: relative;
     width: 300px;
-    gap: 1rem;
+    height: 350px;
+    margin-left: 50px;
     border-radius: 12px;
-    margin-top: 20px;
-    margin-left: 15px;
-}
-.img_conteiner img{
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
-.text_conteiner{
-    height: 150px;
-    width: 350px;
-    background-color: azure;
-    border-radius: 12px;
-    margin-top: 3em;
-    margin-left: 1,5em;
+    margin-bottom: 20px;
+    
 }
 
-.text_conteiner h3{
+
+.card .face_front{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 1s;
+
+} 
+.card .face_front{
+    transform: perspective(600px) rotateY(0deg);
+    box-shadow: 0 5px 10px #000;
+} 
+.card .face_front img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+.card .face_front h3 {
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    background-color: rgba(0,0,0,.4);
+    text-align: center;
+    
+}
+
+.card .face_back{
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    transform: perspective(600px) rotateY(deg);
+    background: rgb(3, 35, 54);
+    color: #f3f3f3;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 5px 10px #000;
 }
 
+.face_back .link{
+    border-top: solid 1px #f3f3f3;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    
+}
 
+.face_back h3 {
+    font-size: 30px;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+.face_back p{
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    
+}
+
+.card:hover .face_front{
+    transform: perspective(600px) rotateY(180deg);
+}
+.card:hover .face_back{
+    transform: perspective(600px) rotateY(360deg);
+}  
+
+.link:hover {
+    color: black;
+}
