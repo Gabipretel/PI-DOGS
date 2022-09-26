@@ -3,6 +3,7 @@ import {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {getNameDog} from '../actions/index'
 import logoSearch from './img/search.png'
+import styles from './styles/SearchBar.module.css'
 function SearchBar() {
 const dispatch = useDispatch()
 const [name, setName] = useState('')
@@ -21,16 +22,19 @@ function handleSubmit(e){     //despacha la accion y luego se ejecuta en el redu
 }
 
     return (
-        <div>
-            <input
+        <div className={styles.search}>
+
+            <input className={styles.conteiner_input}
             value={name}
             type='text'
-            placeholder='Buscar..'
+            placeholder='Find your favorite pets..'
             onChange={(e)=>handleInputChange(e)}
             />
-            <button 
+
+            <button
+            className={styles.btn}
             type='submit' 
-            onClick={(e)=>handleSubmit(e)}>
+            onClick={(e)=>handleSubmit(e)}> 
             <img src={logoSearch} width='40px' height='36px' alt='not found'/>
             </button>
         </div>

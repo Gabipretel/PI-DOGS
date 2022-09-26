@@ -11,7 +11,6 @@ const initialState= {
     alldogs:[], 
     temperaments:[], 
     dogdetails:[],
-    loading:true
 }
 function rootReducer (state= initialState, action){
     switch (action.type) {     //if (action.type === 'GET_DOGS') return ...state, dogs:action.payload

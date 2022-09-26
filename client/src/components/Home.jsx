@@ -123,8 +123,9 @@ const handleOrderByWeight = (e)=>{
                 allDogs={allDogs.length}  // useSelector -->state.dogs
                 paginado={paginado} // function de paginacion
                 />
+                <SearchBar/>  
                 
-                <SearchBar/>   
+
                 <div className={styles.basicgrid}>
                 {
                     currentDogs && currentDogs.map((d)=>{
