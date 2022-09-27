@@ -10,4 +10,41 @@ background-position: center center;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-} 
+}
+.conteiner{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.filters select{
+
+    padding: 10px 20px;
+    color: #333333; 
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+.filters:focus .filters:hover {
+    outline: none;
+    border: 1px solid #ffffff;
+}
+.btn:focus .btn:hover {
+    outline: none;
+    border: 1px solid #ffffff;
+}
+.filters option{
+    background: #ffffff;
+}
+.filters, .btn{
+    
+    padding: 10px 20px;
+    color: #333333; 
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 150px;
+}

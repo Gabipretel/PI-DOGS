@@ -77,56 +77,73 @@ const handleOrderByWeight = (e)=>{
         <div className={styles.homeBackground}>
             <Link to='/dog'>Crea tu Mascota</Link>
             <h1 className={styles.titlepage}>Mascota IT</h1>
-            <button onClick={e =>{handleClick(e)}}>Volvé a cargar las mascotas</button>
+            
 
-            <div>
-                <select defaultValue='title'onChange={e =>handleSort(e)}>
-                <option value="title" selected={selected} disabled>
-                    Filtrar por Abecedario
-                  </option>
-                    <option value="asc">Ascendente A-Z</option>
-                    <option value="desc">Descendente Z-A</option>
-                </select>
-                
-                <select defaultValue='title' onChange={e =>handleFilterCreated(e)}>
-                    <option value="title" selected={selected} disabled>
-                    Filtrar por Origen
-                </option>
-                    <option value='all'>Todos</option>
-                    <option value='created'>Creados</option>
-                    <option value='api'>Existentes</option>
-                </select>
-
-                <select onChange={e =>handleFilterTemperament(e)}>         
-                <option value="all">
-                    Todos los temperamentos
-                </option>
-                    {temperaments.map((temp) => {
-                    return (
-                    <option value={temp} key={temp}>
-                    {temp}
-                    </option>
-                    );
-                    })}
-                </select>
-
-                <select defaultValue='title' onChange={e =>handleOrderByWeight(e)} >
-                <option value="title" selected={selected} disabled>
-                    Filtrar por Peso
-                </option>
-                    <option value='heavy'>Lo más Grandotes</option>
-                    <option value='weak'>Lo más Chicos</option>
-                </select>
-                
-                <Pagination
+            <Pagination
                 dogsPerPage={dogsPerPage} // Estado local
                 allDogs={allDogs.length}  // useSelector -->state.dogs
                 paginado={paginado} // function de paginacion
                 />
-                <SearchBar/>  
-                
+            <div className={styles.conteiner}>
 
-                <div className={styles.basicgrid}>
+                    <select className={styles.filters} defaultValue='title'onChange={e =>handleSort(e)}>
+                        <option value="title" selected={selected} disabled>
+                        Filtrar por Abecedario
+                        </option>
+                        <option value="asc">Ascendente A-Z</option>
+                        <option value="desc">Descendente Z-A</option>
+                    </select>
+
+           
+
+            
+
+                        <select className={styles.filters} defaultValue='title' onChange={e =>handleFilterCreated(e)}>
+                        <option value="title" selected={selected} disabled>
+                    Filtrar por Origen
+                        </option>
+                        <option value='all'>Todos</option>
+                        <option value='created'>Creados</option>
+                        <option value='api'>Existentes</option>
+                    </select>
+              
+                
+               
+
+                    <select  className={styles.filters} onChange={e =>handleFilterTemperament(e)}>         
+                        <option value="all">
+                        Todos los temperamentos
+                        </option>
+                        {temperaments.map((temp) => {
+                        return (
+                        <option value={temp} key={temp}>
+                        {temp}
+                        </option>
+                        );
+                    })}
+                    </select>
+
+       
+                
+               
+
+                    <select className={styles.filters} defaultValue='title' onChange={e =>handleOrderByWeight(e)} >
+                        <option value="title" selected={selected} disabled>
+                            Filtrar por Peso
+                        </option>
+                        <option value='heavy'>Lo más Grandotes</option>
+                        <option value='weak'>Lo más Chicos</option>
+
+                    </select>
+                    <button className={styles.btn} onClick={e =>{handleClick(e)}}>Volvé a cargar las mascotas</button>
+                </div>
+                
+            
+       
+
+            <SearchBar/>  
+
+            <div className={styles.basicgrid}>
                 {
                     currentDogs && currentDogs.map((d)=>{
                         console.log(currentDogs)
@@ -146,7 +163,6 @@ const handleOrderByWeight = (e)=>{
                     })
                 }
                 </div>
-            </div>
         </div>
     )
 }

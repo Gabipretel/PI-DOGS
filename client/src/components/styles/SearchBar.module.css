@@ -4,6 +4,7 @@
     margin-bottom: 20px;
     display: inline-flex;
     flex-direction: row-reverse;
+    margin-bottom: 30px;
 }
 .search .conteiner_input{
     width: 0;
