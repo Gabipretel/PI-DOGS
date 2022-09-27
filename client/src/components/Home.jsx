@@ -7,6 +7,7 @@ import Card from './Card'
 import Pagination from './Pagination'
 import SearchBar from './SearchBar'
 import styles from './styles/Home.module.css'
+import logo from './img/PiDog.png'
 
 
 function Home() {
@@ -75,44 +76,38 @@ const handleOrderByWeight = (e)=>{
 
     return (
         <div className={styles.homeBackground}>
-            <Link to='/dog'>Crea tu Mascota</Link>
-            <h1 className={styles.titlepage}>Mascota IT</h1>
-            
+        
+            <h1 className={styles.titlepage}> Doggies App </h1>
 
-            <Pagination
-                dogsPerPage={dogsPerPage} // Estado local
-                allDogs={allDogs.length}  // useSelector -->state.dogs
-                paginado={paginado} // function de paginacion
-                />
+            <div className={styles.boxbtns}>
+
+            <Link to='/dog' className={styles.boxlink} style={{ textDecoration: 'none' ,color: 'black'}}>Create{' '}Dogs</Link>
+            <img className={styles.imgLogo} src={logo} alt="not found" />
+            <SearchBar/>  
+
+            </div>
             <div className={styles.conteiner}>
-
+            
                     <select className={styles.filters} defaultValue='title'onChange={e =>handleSort(e)}>
                         <option value="title" selected={selected} disabled>
-                        Filtrar por Abecedario
+                        Filter by ABC
                         </option>
-                        <option value="asc">Ascendente A-Z</option>
-                        <option value="desc">Descendente Z-A</option>
+                        <option value="asc">Ascendant A-Z</option>
+                        <option value="desc">Descendent Z-A</option>
                     </select>
 
-           
-
-            
-
-                        <select className={styles.filters} defaultValue='title' onChange={e =>handleFilterCreated(e)}>
+                    <select className={styles.filters} defaultValue='title' onChange={e =>handleFilterCreated(e)}>
                         <option value="title" selected={selected} disabled>
-                    Filtrar por Origen
+                        Filter by Origin
                         </option>
-                        <option value='all'>Todos</option>
-                        <option value='created'>Creados</option>
-                        <option value='api'>Existentes</option>
+                        <option value='all'>All</option>
+                        <option value='created'>Created </option>
+                        <option value='api'>Existing</option>
                     </select>
-              
-                
-               
 
                     <select  className={styles.filters} onChange={e =>handleFilterTemperament(e)}>         
                         <option value="all">
-                        Todos los temperamentos
+                        All temperaments
                         </option>
                         {temperaments.map((temp) => {
                         return (
@@ -123,25 +118,21 @@ const handleOrderByWeight = (e)=>{
                     })}
                     </select>
 
-       
-                
-               
-
                     <select className={styles.filters} defaultValue='title' onChange={e =>handleOrderByWeight(e)} >
                         <option value="title" selected={selected} disabled>
-                            Filtrar por Peso
+                        FilterbyWeight
                         </option>
-                        <option value='heavy'>Lo más Grandotes</option>
-                        <option value='weak'>Lo más Chicos</option>
-
+                        <option value='heavy'>The Biggest</option>
+                        <option value='weak'>The Little Ones</option>
                     </select>
-                    <button className={styles.btn} onClick={e =>{handleClick(e)}}>Volvé a cargar las mascotas</button>
-                </div>
-                
+                    <button className={styles.btn} onClick={e =>{handleClick(e)}}>Clean Filters</button>
             
-       
-
-            <SearchBar/>  
+            </div>
+            <Pagination
+                dogsPerPage={dogsPerPage} // Estado local
+                allDogs={allDogs.length}  // useSelector -->state.dogs
+                paginado={paginado} // function de paginacion
+                />
 
             <div className={styles.basicgrid}>
                 {
