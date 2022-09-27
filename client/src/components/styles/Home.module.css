@@ -1,8 +1,11 @@
-.homeBackground{
-background-color: #a1cdea;
+/* .homeBackground{
+background-color: #e2e8ed;
 background-repeat:no-repeat;
 background-size: cover;
-}
+background-attachment: fixed;
+background-position: center center;
+/* #a1cdea; */
+
 .basicgrid {
     display: grid;
     gap: 1rem;

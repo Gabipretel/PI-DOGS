@@ -1,3 +1,10 @@
+body{
+background-color: #e2e8ed;
+background-repeat:no-repeat;
+background-size: cover;
+background-attachment: fixed;
+background-position: center center;
+}
 .App {
   text-align: center;
 }

@@ -1,0 +1,27 @@
+.form_conteiner{
+background-image: url('../img/goldens.jpg');
+background-position: center;
+background-size: cover;
+background-repeat:no-repeat ;
+height: 100vh;
+color: white;
+
+}
+
+.form_conteiner h1{
+    margin-top: 0px;
+    
+}
+.form_conteiner  input{
+    margin-bottom: 30px;
+    width: 200px;
+    border-radius: 12px;
+    height: 30px;
+
+}
+.error{
+margin-top: -25px;
+font-weight: 700px;
+font-size: 15px;
+}
+

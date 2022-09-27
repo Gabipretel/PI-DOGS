@@ -1,7 +1,7 @@
 .card{
     position: relative;
     width: 300px;
-    height: 350px;
+    height: 330px;
     margin-left: 50px;
     border-radius: 12px;
     margin-bottom: 20px;
@@ -77,11 +77,15 @@
 
 .card:hover .face_front{
     transform: perspective(600px) rotateY(180deg);
+    transform: scale(1.1);
 }
 .card:hover .face_back{
     transform: perspective(600px) rotateY(360deg);
+    transform: scale(1.1);
+    transition: 1s;
 }  
 
+
 .link:hover {
-    color: black;
+background:#49a549; 
 }

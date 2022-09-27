@@ -2,6 +2,7 @@ import React ,{useState,useEffect}from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import {postDog, getTemperamentsList } from '../actions'
 import {useDispatch,useSelector} from 'react-redux'
+import styles from './styles/DogCreate.module.css'
 // importar getTemperaments crearla..
 //postDogs//
 
@@ -121,15 +122,13 @@ function handleDelete(del) {
 }
 
 return (
-    <div>
-        <Link to='/home'><button>VOLVER</button></Link>
-    AQUI SE VA A CREAR EL PERRO(RAZA)
-        <h1>Crea tu raza de Perro</h1>
-        <h3>Agregar IMG eso falta.</h3>
-        <form onSubmit={handleSubmit}>
+    <div className={styles.form_conteiner}>
+        
+        <h1>Create your Dog 🐶</h1>
+        <form className={styles.boxform} onSubmit={handleSubmit}>
 
             <div>
-            <label>Imagen:</label>
+            <label>Image{' '}</label>
             <input
             type='url'
             value={input.image}
@@ -137,11 +136,11 @@ return (
             placeholder='Escriba una URL'
             onChange={handleChange}
             />
-            {errors.image && <p className='error'>{errors.image}</p>}
+            {errors.image && <p className={styles.error}>{errors.image}</p>}
             </div>
 
             <div>
-            <label>Nombre:</label>
+            <label>Name{' '}</label>
             <input
             type='text'
             value={input.name}
@@ -149,11 +148,11 @@ return (
             placeholder='Ingrese un nombre'
             onChange={handleChange}
             />
-            {errors.name && <p className='error'>{errors.name}</p>}
+            {errors.name && <p className={styles.error}>{errors.name}</p>}
             </div>
 
             <div>
-            <label>Altura mínima:</label>
+            <label>Minimun height{' '}</label>
             <input
             type='number'
             value={input.height_min}
@@ -163,11 +162,11 @@ return (
             max='45'
             onChange={handleChange}
             />
-            {errors.height_min && <p className='error'>{errors.height_min}</p>}
+            {errors.height_min && <p className={styles.error}>{errors.height_min}</p>}
             </div>
 
             <div>
-            <label>Altura máxima:</label>
+            <label>Maximum height{' '}</label>
             <input
             type='number'
             value={input.height_max}
@@ -177,11 +176,12 @@ return (
             max='115'
             onChange={handleChange}
             />
-            {errors.height_max && <p className='error'>{errors.height_max}</p>}
+            {errors.height_max && <p className={styles.error}>{errors.height_max}</p>}
             </div>
 
+            <div className={styles.boxformleft}>   
             <div>
-            <label>Peso mínimo:</label>
+            <label>Minimum weight{' '}</label>
             <input
             type='number'
             value={input.weight_min}
@@ -191,11 +191,11 @@ return (
             max='50'
             onChange={handleChange}
             />
-            {errors.weight_min && <p className='error'>{errors.weight_min}</p>}
+            {errors.weight_min && <p className={styles.error}>{errors.weight_min}</p>}
             </div>
 
             <div>
-            <label>Peso máximo:</label>
+            <label>Maximum weight{' '}</label>
             <input
             type='number'
             value={input.weight_max}
@@ -205,11 +205,11 @@ return (
             max='110'
             onChange={handleChange}
             />
-            {errors.weight_max && <p className='error'>{errors.weight_max}</p>}
+            {errors.weight_max && <p className={styles.error}>{errors.weight_max}</p>}
             </div>
 
             <div>
-            <label>Años de vida:</label>
+            <label>Life span{' '}</label>
             <input
             type='number'
             value={input.life_span}
@@ -219,11 +219,11 @@ return (
             max='30'
             onChange={handleChange}
             />
-            {errors.life_span && <p className='error'>{errors.life_span}</p>}
+            {errors.life_span && <p className={styles.error}>{errors.life_span}</p>}
             </div>
 
             <div>
-            <label>Temperamentos:{' '}</label>
+            <label>Temperaments{' '}</label>
             <select onChange={handleSelect}>
             {temperaments.map((temp) => {
                     return (
@@ -233,15 +233,16 @@ return (
             <ul>
                 <li>{input.temperament.map(elem=>elem +" ")}</li>
             </ul>
-            {errors.temperament && <p className='error'>{errors.temperament}</p>}
+            {errors.temperament && <p className={styles.error}>{errors.temperament}</p>}
             </div>
 
             <div>
             <button>Click aqui para crear</button>
             </div>
-            
+            </div>
             
         </form>
+        <Link to='/home'><button>VOLVER</button></Link>
         {input.temperament.map(elem=>
             <div>
                 <p>{elem}</p>
