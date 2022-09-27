@@ -4,9 +4,7 @@
     font-size: 3rem;
     margin-left: 20px;
 }
-h1:hover{
-    color: rgb(213, 86, 86);
-}
+
 /* SEARCH Y CREATE  */
 .boxbtns{
     list-style: none;
