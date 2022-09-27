@@ -77,7 +77,7 @@ const handleOrderByWeight = (e)=>{
     return (
         <div className={styles.homeBackground}>
         
-            <h1 className={styles.titlepage}> Doggies App </h1>
+            <h1 className={styles.titlepage}> Puppies App </h1>
 
             <div className={styles.boxbtns}>
 
@@ -132,6 +132,7 @@ const handleOrderByWeight = (e)=>{
                 dogsPerPage={dogsPerPage} // Estado local
                 allDogs={allDogs.length}  // useSelector -->state.dogs
                 paginado={paginado} // function de paginacion
+                currentPage={currentPage}
                 />
 
             <div className={styles.basicgrid}>

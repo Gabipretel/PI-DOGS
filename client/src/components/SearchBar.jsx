@@ -16,9 +16,14 @@ function handleInputChange(e){ // tomar el valor del input
 }
 
 function handleSubmit(e){     //despacha la accion y luego se ejecuta en el reducer el cambio en el estado
-    e.preventDefault()
-    dispatch(getNameDog(name))
-    setName('')
+    if(!name){
+        alert('Not found or does not exist')
+    }
+    else{
+        e.preventDefault()
+        dispatch(getNameDog(name))
+        setName('')
+    }
 }
 
     return (
