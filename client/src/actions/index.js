@@ -78,7 +78,7 @@ export function getNameDog (name){
             })
         } catch (error) {
             console.log(error)
-            alert('Not found or does not exist')
+            alert(`Error ${error.response.status} ${error.response.data}`)
         }
     }
 }

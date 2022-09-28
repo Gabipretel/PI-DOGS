@@ -59,7 +59,7 @@ router.get('/dogs', async (req,res)=>{
     if(name){
         let dogName= await dogsTotal.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase())) 
         dogName.length ? //si existe, porque tiene algo-- entonces->
-        res.status(200).send(dogName) : res.status(404).send('No existe el perro') // trae un perro q buscas especificamente.
+        res.status(200).send(dogName) : res.status(404).send('Not found or does not exist 😥') // trae un perro q buscas especificamente.
     }else{
         res.status(201).send(dogsTotal) //trae todos los perros
     }
@@ -117,7 +117,7 @@ router.post('/dogs',async (req,res)=>{
             where: {name: temperament}
         })
         dogCreated.addTemperament(temperamentDb)
-        res.send('Se ha creado con exito!')
+        res.send('Successfully Created!')
     } catch (error) {
         res.status(404).send(error)
     }
@@ -133,7 +133,7 @@ router.get('/dogs/:id', async (req,res)=>{
             let dogsId= await dogsTotal.filter(dog => dog.id == id)
             dogsId.length?
             res.status(200).json(dogsId):
-            res.status(404).send('No se encuentra lo que busca')
+            res.status(404).send('Not found or does not exist 😥')
         }
 })
 

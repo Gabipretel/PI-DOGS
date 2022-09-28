@@ -13,34 +13,33 @@ import styles from './styles/DogCreate.module.css'
 function validateForm(input){
     let errors= {};
     if(!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(input.image)) {
-        errors.image= 'Se requiere una URL de tipo jpg,jpeg,webp,avif,gif,svg, Aviso: de no ser provista tendra una por defecto'
+        errors.image= 'A URL of type jpg,jpeg,webp,avif,gif,svg is required'
 
     }else if(!/((?=.*_)^[a-zA-Z_\s]{1,19}[a-zA-Z]$)|((?!.*_)^[a-zA-Z\s]{1,20}$)/.test(input.name)){ 
-        errors.name= 'Se requiere un nombre';
+        errors.name= 'A name is required';
 
     }else if(input.height_min < 15 || input.height_min > 45 ) { 
-        errors.height_min= 'Se requiere una altura mínima entre 15cm a 45cm'
+        errors.height_min= 'A minimum height between 15cm to 45cm is required'
 
     }else if(input.height_max < 20 || input.height_max > 115  ) {
-        errors.height_max= 'Se requiere una altura máximo entre 20 cm a 115cm '
+        errors.height_max= 'A maximum height between 20cm to 115cm is required'
 
     }else if(input.weight_min < 1 || input.weight_min > 50  ) {
-        errors.weight_min= 'Se requiere un peso mínimo entre 1kg a 50kg '
+        errors.weight_min= 'A minimum weight between 1kg to 50kg is required '
 
     }else if(input.weight_max < 2 || input.weight_max > 110) {
-        errors.weight_max= 'Se requiere un peso máximo a partir de los 2kg '
+        errors.weight_max= 'A maximum weight is required from 2kg '
         
     }else if(input.life_span < 6  || input.life_span > 30 ) {
-        errors.life_span= 'Se requiere un numero entre 6 a 30 años '
+        errors.life_span= 'A number between 6 to 30 years is required'
     }
     else if(input.temperament.length < 1  || input.temperament.length > 5 ) {
-        errors.temperament= 'Se requiere al menos un temperamento y no mas de cinco'
+        errors.temperament= 'At least one temperament is required and no more than five'
     }
     return errors
 }
 
 function DogCreate() {
-  // ESTO ESTA ROMPIENDO
 const dispatch= useDispatch();
 const history= useHistory();
 //ORDENA DE la A a Z
@@ -96,7 +95,7 @@ function handleSubmit(e){
     {
         e.preventDefault();
         dispatch(postDog(input))
-        alert('Creado correctamente')
+        alert('Successfully Created')
         setInput({
         image:'',
         name: '',
@@ -109,7 +108,7 @@ function handleSubmit(e){
         })
         history.push('/home')
     } else{
-        return alert("Algo salió mal 😥Complete  los datos correctamente para continuar")
+        return alert("Something went wrong  😥Fill in the details correctly to continue")
 
     }
 }
@@ -122,107 +121,108 @@ function handleDelete(del) {
 }
 
 return (
-    <div className={styles.form_conteiner}>
-        
+<div className={styles.form_conteiner}>
         <h1>Create your Dog 🐶</h1>
-        <form className={styles.boxform} onSubmit={handleSubmit}>
 
-            <div>
-            <label>Image{' '}</label>
+<div className={styles.boxform}>
+    
+    <form>
+
+        <div className={styles.field}>
+            
             <input
             type='url'
             value={input.image}
             name='image'
-            placeholder='Escriba una URL'
+            placeholder='Enter a URL'
             onChange={handleChange}
             />
             {errors.image && <p className={styles.error}>{errors.image}</p>}
-            </div>
+        </div>
 
-            <div>
-            <label>Name{' '}</label>
+        <div className={styles.field}>
+            
             <input
             type='text'
             value={input.name}
             name='name'
-            placeholder='Ingrese un nombre'
+            placeholder='Enter a Name '
             onChange={handleChange}
             />
             {errors.name && <p className={styles.error}>{errors.name}</p>}
-            </div>
+        </div>
 
-            <div>
-            <label>Minimun height{' '}</label>
+        <div className={styles.field}>
+         
             <input
             type='number'
             value={input.height_min}
             name='height_min'
-            placeholder='Ingrese una altura min'
+            placeholder='Enter a Minimum height'
             min='15'
             max='45'
             onChange={handleChange}
             />
             {errors.height_min && <p className={styles.error}>{errors.height_min}</p>}
-            </div>
+        </div>
 
-            <div>
-            <label>Maximum height{' '}</label>
+        <div className={styles.field}>
+            
             <input
             type='number'
             value={input.height_max}
             name='height_max'
-            placeholder='Ingrese una altura max'
+            placeholder='Enter a Maximum height'
             min='20'
             max='115'
             onChange={handleChange}
             />
             {errors.height_max && <p className={styles.error}>{errors.height_max}</p>}
-            </div>
+        </div>
 
-            <div className={styles.boxformleft}>   
-            <div>
-            <label>Minimum weight{' '}</label>
+        <div className={styles.field}>
+           
             <input
             type='number'
             value={input.weight_min}
             name='weight_min'
-            placeholder='Ingrese un peso min'
+            placeholder='Enter a Minimum weight'
             min='1'
             max='50'
             onChange={handleChange}
             />
             {errors.weight_min && <p className={styles.error}>{errors.weight_min}</p>}
-            </div>
+        </div>
 
-            <div>
-            <label>Maximum weight{' '}</label>
+        <div className={styles.field}>
+          
             <input
             type='number'
             value={input.weight_max}
             name='weight_max'
-            placeholder='Ingrese un peso max'
+            placeholder='Enter a Maximum weight'
             min='2'
             max='110'
             onChange={handleChange}
             />
             {errors.weight_max && <p className={styles.error}>{errors.weight_max}</p>}
-            </div>
+        </div>
 
-            <div>
-            <label>Life span{' '}</label>
+        <div className={styles.field}>
+       
             <input
             type='number'
             value={input.life_span}
             name='life_span'
-            placeholder='Ingrese años de vida'
+            placeholder='Enter Life span'
             min='6'
             max='30'
             onChange={handleChange}
             />
             {errors.life_span && <p className={styles.error}>{errors.life_span}</p>}
-            </div>
+        </div>
 
-            <div>
+        <div className={styles.field}>
             <label>Temperaments{' '}</label>
             <select onChange={handleSelect}>
             {temperaments.map((temp) => {
@@ -230,27 +230,27 @@ return (
                     <option value={temp} key={temp}>{temp}</option>
                     );})}
             </select>
-            <ul>
+            {/* <ul>
                 <li>{input.temperament.map(elem=>elem +" ")}</li>
-            </ul>
+            </ul> */}
             {errors.temperament && <p className={styles.error}>{errors.temperament}</p>}
-            </div>
+        </div>
+    </form>
 
-            <div>
-            <button>Click aqui para crear</button>
-            </div>
-            </div>
-            
-        </form>
-        <Link to='/home'><button>VOLVER</button></Link>
-        {input.temperament.map(elem=>
-            <div>
-                <p>{elem}</p>
-                <button onClick={()=>handleDelete(elem)}>X</button>
-            </div>
-    )}
+    
 
-    </div>
+</div>    
+            {input.temperament.map(elem=>
+            <div>
+                <button className={styles.btndelete} onClick={()=>handleDelete(elem)}>Delete{' '}{elem}</button>
+            </div>
+            )}
+        <div className={styles.btns}>
+            <button className={styles.create} onClick={handleSubmit}>Create</button>
+            <Link to='/home'><button>Back</button></Link>
+        </div>
+                
+</div>
 )
 }
 

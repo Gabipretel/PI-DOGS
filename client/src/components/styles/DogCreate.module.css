@@ -1,27 +1,85 @@
 .form_conteiner{
-background-image: url('../img/goldens.jpg');
-background-position: center;
-background-size: cover;
-background-repeat:no-repeat ;
-height: 100vh;
-color: white;
-
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
-
 .form_conteiner h1{
-    margin-top: 0px;
-    
+    margin-top: -15px;
 }
-.form_conteiner  input{
-    margin-bottom: 30px;
-    width: 200px;
+
+.form_conteiner::after {
+content: '';
+background-image: url('../img/goldens.jpg');
+position: absolute;
+background-repeat:no-repeat ;
+background-size: cover ;
+background-position: center;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+z-index: -1;
+height: 120vh;
+/* color: white; */
+}
+
+.form_conteiner{
+    padding: 60px;
+    max-width: 500px;
+    background-color: rgb(32 62 43 / 40%);
+    margin: 0 auto;
+    border-radius: 16px;
+}
+.form_conteiner input{
+    margin-bottom: 17px;
+    font-family: "Roboto", sans-serif;
+    width: 70%;
+    padding: 10px;
+    box-sizing: border-box; 
+    border: none; 
+    color: #525c66; 
+    font-size: 1em;
+    resize: none; 
+}
+
+.form_conteiner .btns .create {
+    display: block;
+    background-color: #43893e;
+    padding: 10px 25px 10px 20px;
+    border: 0;
+    font-size: 1em; 
+    color: 	white;
+    font-family: "Roboto", sans-serif;
     border-radius: 12px;
-    height: 30px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+.form_conteiner .btns button {
+    background-color: #43893e;
+    padding: 10px 25px 10px 20px;
+    border: 0;
+    font-size: 1em; 
+    color: 	white;
+    font-family: "Roboto", sans-serif;
+    border-radius: 12px;
+    border: 1px solid red;
+}
+.form_conteiner .btns .create:hover{
+    background-color: #0f0e0e;
+}
+.form_conteiner .btns button:hover{
+    background-color: #802408;
+}
+.btndelete{
+    border-radius: 12px;
+    background: rgb(173, 20, 20);
+    color: white;
+    margin-left: 100px;
+}
+.btns{
+    display: flex;
+    justify-content:space-evenly;
+    margin-top: 30px;
 
 }
-.error{
-margin-top: -25px;
-font-weight: 700px;
-font-size: 15px;
-}
-
