@@ -1,0 +1,76 @@
+.font{
+    background-image: url('../img/huellas.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.boxcard{
+        background-color:#b0dfcf;
+        max-width: 600px;
+        margin: auto;
+        margin-top: -10px;
+        font-size: 1px;
+        border-radius: 12px;
+       min-height: 100vh;
+        border: 1px solid black;
+}
+.boxcard img{
+    margin-top: 5px;
+    border-radius: 12px;
+    -webkit-box-shadow: 10px 10px 31px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 31px 1px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 31px 1px rgba(0,0,0,0.75);
+    margin-bottom: 10px;
+}
+.boxcard img:hover{
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+.details h3{
+    font-size: 19px;
+    
+}
+
+.details h1{
+    font-size: 30px;
+    margin-top: 20px;
+    font-weight: bold;
+    
+
+}
+.details h3{
+    border-radius: 12px;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.btn{
+    color: #0d0d0d;
+    background-color:#b0dfcf;
+    border-radius: 10px;
+    display: block;
+    padding: 5px 30px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.backbtn{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+    
+}
+.btn:hover {
+    background-color:rgba(255, 0, 0, 0.73);
+    border-radius: 10px;
+    color: white;
+}
