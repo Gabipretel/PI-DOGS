@@ -87,3 +87,7 @@ height: 120vh;
 .field label{
     color: white;
 }
+.field .error{
+
+    font-weight: bold;
+}
