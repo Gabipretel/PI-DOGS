@@ -19,7 +19,7 @@ const dogdetails= useSelector((state)=> state.dogdetails)
   return (
     <div className={styles.font}>
           <Link to='/home' style={{textDecoration:'none'}}>
-                <button  className={styles.btn}  >Volver</button>
+                <button  className={styles.btn}  >Back</button>
             </Link>
       {
         dogdetails.length > 0 ? 

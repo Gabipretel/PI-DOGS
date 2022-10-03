@@ -109,9 +109,18 @@ router.get("/temperaments", async (req, res) => {
 router.post('/dogs',async (req,res)=>{
     try { //llega info por formulario.//
         let {name,height_min,weight_min,height_max,weight_max,life_span,image,createdInDB,temperament} =req.body;
-        
+
+        const random = await axios.get("https://dog.ceo/api/breeds/image/random")
+        const imageRandom= random.data.message
         const dogCreated= await Dog.create({
-        name,height_min, weight_min,height_max,weight_max,life_span,image, createdInDB
+        name,
+        height_min,
+        weight_min,
+        height_max,
+        weight_max,
+        life_span,
+        image : image? image : imageRandom,
+        createdInDB
         })
         let temperamentDb= await Temperament.findAll({ //AMIGABLE, FIEL, AMIGO DE TODOS,
             where: {name: temperament}

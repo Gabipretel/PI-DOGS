@@ -12,10 +12,10 @@ import styles from './styles/DogCreate.module.css'
 // Debo terminarlo...
 function validateForm(input){
     let errors= {};
-    if(!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(input.image)) {
-        errors.image= 'A URL of type jpg,jpeg,webp,avif,gif,svg is required'
-
-    }else if(!/((?=.*_)^[a-zA-Z_\s]{1,19}[a-zA-Z]$)|((?!.*_)^[a-zA-Z\s]{1,20}$)/.test(input.name)){ 
+    // if(!/^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(input.image)) {
+    //     errors.image= 'A URL of type jpg,jpeg,webp,avif,gif,svg is required'}
+        
+    if(!/((?=.*_)^[a-zA-Z_\s]{1,19}[a-zA-Z]$)|((?!.*_)^[a-zA-Z\s]{1,20}$)/.test(input.name)){ 
         errors.name= 'A name is required';
 
     }else if(input.height_min < 15 || input.height_min > 45 ) { 
@@ -83,7 +83,7 @@ function handleSelect(e){
 function handleSubmit(e){
     //Pregunta si existen los datos en el form
     if (
-        input.image &&
+        // input.image &&
         input.name  &&
         input.height_min &&
         input.height_max &&
