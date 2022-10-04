@@ -72,6 +72,7 @@ export function getNameDog (name){
     return async function(dispatch){
         try {
             let json= await axios.get(`http://localhost:3001/dogs?name=${name}`)
+            console.log(json,'action-info')
             return dispatch({
                 type: GET_NAME_DOGS,
                 payload: json.data

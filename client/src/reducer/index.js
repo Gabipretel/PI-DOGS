@@ -91,6 +91,7 @@ function rootReducer (state= initialState, action){
                 }
                 
         case GET_NAME_DOGS:
+            console.log(action.payload,'reducer-info')
             return{
                 ...state,
                 dogs: action.payload

@@ -38,7 +38,7 @@ const getDbInfo = async ()=>{
             model: Temperament,
             attributes: ['name'],
             through: {
-                attributes: [], // comprobacion, mediante los atributos. 
+                attributes: [], 
             }
         } 
     })
@@ -90,7 +90,7 @@ router.get("/temperaments", async (req, res) => {
     let everyTemperament = allData.data
         .map((dog) => (dog.temperament ? dog.temperament : "No info"))
         .map((dog) => dog?.split(", "));
-    let eachTemperament = [...new Set(everyTemperament.flat())];
+    let eachTemperament = [...new Set(everyTemperament.flat())];  
     eachTemperament.forEach((el) => {
         if (el) {
         Temperament.findOrCreate({
@@ -136,7 +136,17 @@ router.post('/dogs',async (req,res)=>{
 
 //RUTA  4 IDRAZA//
 
-router.get('/dogs/:id', async (req,res)=>{
+// router.get('/dogs/:id', async (req,res)=>{
+//     const {id}= req.params;
+//     const dogsTotal= await getAllDogs()
+//         if(id){
+//             let dogsId= await dogsTotal.filter(dog => dog.id == id)
+//             dogsId.length?
+//             res.status(200).json(dogsId):
+//             res.status(404).send('Not found or does not exist 😥')
+//         }
+// })
+router.get('/dogs/:id', async (req,res)=>{    // hoem/dome?id=7   url
     const {id}= req.params;
     const dogsTotal= await getAllDogs()
         if(id){
@@ -146,10 +156,5 @@ router.get('/dogs/:id', async (req,res)=>{
             res.status(404).send('Not found or does not exist 😥')
         }
 })
-
-
-
-
-
 
 module.exports = router;

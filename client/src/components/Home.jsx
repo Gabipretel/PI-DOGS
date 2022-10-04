@@ -13,9 +13,10 @@ import logo from './img/PiDog.png'
 function Home() {
     const dispatch = useDispatch(); //reemplaza a la fn mapDispatchToProps.
     const allDogs= useSelector((state) => state.dogs) //reemplaza el mapStateToProps.
+    
     //PAGINADO VARIOS ESTADOS LOCALES.
     const [currentPage, setCurrentPage] = useState(1)
-    const [dogsPerPage, setDogsPerPage] = useState(8)
+    const dogsPerPage = 9
     const lastDog= currentPage * dogsPerPage //8
     const firstDog= lastDog - dogsPerPage //8-8 = 0
     const currentDogs= allDogs.slice(firstDog,lastDog) // indice 0 hasta el 5.

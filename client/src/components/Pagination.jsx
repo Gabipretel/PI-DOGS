@@ -5,7 +5,7 @@ function Pagination({dogsPerPage,allDogs,paginado,currentPage}) {
 
     for (let i= 0; i<=Math.ceil(allDogs/dogsPerPage)-1; i++){
         pageNumbers.push(i+1)
-    }
+    } /// [1,2,3,4,5,6,7]
 
 return (
     <div>

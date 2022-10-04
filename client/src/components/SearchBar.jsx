@@ -22,6 +22,7 @@ function handleSubmit(e){     //despacha la accion y luego se ejecuta en el redu
     else{
         e.preventDefault()
         dispatch(getNameDog(name))
+        
         setName('')
     }
 }
