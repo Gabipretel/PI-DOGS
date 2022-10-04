@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux'
 import {getNameDog} from '../actions/index'
 import logoSearch from './img/search.png'
 import styles from './styles/SearchBar.module.css'
-function SearchBar() {
+function SearchBar({paginado}) {
 const dispatch = useDispatch()
 const [name, setName] = useState('')
 
@@ -22,7 +22,7 @@ function handleSubmit(e){     //despacha la accion y luego se ejecuta en el redu
     else{
         e.preventDefault()
         dispatch(getNameDog(name))
-        
+        paginado(1)
         setName('')
     }
 }

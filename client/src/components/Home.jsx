@@ -84,7 +84,7 @@ const handleOrderByWeight = (e)=>{
 
             <Link to='/dog' className={styles.boxlink} style={{ textDecoration: 'none' ,color: 'black'}}>Create{' '}Dogs</Link>
             <img className={styles.imgLogo} src={logo} alt="not found" />
-            <SearchBar/>  
+            <SearchBar paginado={paginado}/>  
 
             </div>
             <div className={styles.conteiner}>
