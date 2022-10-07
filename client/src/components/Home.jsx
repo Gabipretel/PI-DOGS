@@ -16,7 +16,7 @@ function Home() {
     
     //PAGINADO VARIOS ESTADOS LOCALES.
     const [currentPage, setCurrentPage] = useState(1)
-    const dogsPerPage = 9
+    const dogsPerPage = 8
     const lastDog= currentPage * dogsPerPage //8
     const firstDog= lastDog - dogsPerPage //8-8 = 0
     const currentDogs= allDogs.slice(firstDog,lastDog) // indice 0 hasta el 5.
@@ -48,6 +48,7 @@ function Home() {
     }
      const handleFilterCreated= (e)=>{
         dispatch(filterCreated(e.target.value))
+        setCurrentPage(1)
     }
 
 //sort ASC-DESC

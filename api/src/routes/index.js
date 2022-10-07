@@ -4,7 +4,7 @@ const axios = require('axios')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const {Dog,Temperament} = require('../db')
-const {API_KEY} = process.env;
+// const {API_KEY} = process.env;
 
 const router = Router();
 
@@ -14,7 +14,7 @@ const router = Router();
 //FUNCIONES GLOBALES PARA TRAER INFO DE API Y DE DB PROPIA.//
  // FUNCION INFO API
 const getApiInfo= async () =>{
-    const apiUrl= await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
+    const apiUrl= await axios.get(`https://api.thedogapi.com/v1/breeds`);
     const apiInfo= await apiUrl.data.map(dog =>{
         return {
             id: dog.id,
@@ -86,7 +86,7 @@ router.get('/dogs', async (req,res)=>{
 //get temperaments traer de Api y guardar en la db propia.. RUTA 5.
 router.get("/temperaments", async (req, res) => {
     try {
-    const allData = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);    
+    const allData = await axios.get(`https://api.thedogapi.com/v1/breeds`);    
     let everyTemperament = allData.data
         .map((dog) => (dog.temperament ? dog.temperament : "No info"))
         .map((dog) => dog?.split(", "));
