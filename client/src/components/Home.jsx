@@ -97,7 +97,7 @@ const handleOrderByWeight = (e)=>{
                         <option value="asc">Ascendant A-Z</option>
                         <option value="desc">Descendent Z-A</option>
                     </select>
-
+                    
                     <select className={styles.filters} defaultValue='title' onChange={e =>handleFilterCreated(e)}>
                         <option value="title" selected={selected} disabled>
                         Filter by Origin

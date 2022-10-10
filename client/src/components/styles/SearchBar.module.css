@@ -42,4 +42,29 @@
 
 .search .conteiner_input:focus {
     width: 240px;
+} 
+@media screen and (max-width: 400px) {
+.search{
+        margin-top: 20px;
+    }
+    .search:hover .conteiner_input {
+        width: 200px;
+    }
+    
+    .search .conteiner_input:focus {
+        width: 200px;
+    } 
+}
+
+@media screen and (min-width: 400px) and (max-width: 800px) {
+    .search{
+        margin-top: 20px;
+    }
+    .search:hover .conteiner_input {
+        width: 200px;
+    }
+    
+    .search .conteiner_input:focus {
+        width: 200px;
+    } 
 }

@@ -74,3 +74,42 @@
     border-radius: 10px;
     color: white;
 }
+
+@media screen  and (max-width: 360px) {
+    .boxcard img{
+        width: 250px;
+        height: 250px;
+        /* margin: 0 auto; */
+        
+    }
+    .details h1{
+        font-size: 24px;
+    }
+    .details h3{
+        margin-top: 20px;
+        font-size: 15px;
+    }
+    .btn{
+        font-size: 14px;
+    }
+
+}
+
+@media screen   and (min-width: 361px)  and (max-width: 470px){
+    .boxcard img{
+        width: 300px;
+        height: 250px;
+        
+    }
+    .details h1{
+        font-size: 27px;
+    }
+    .details h3{
+        margin-top: 20px;
+        font-size: 17px;
+    }
+    .btn{
+        font-size: 17px;
+    }
+
+}
