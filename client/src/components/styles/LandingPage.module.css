@@ -5,6 +5,7 @@ background-size: cover;
 height: 100vh;
 display: flex;
 flex-direction: column;
+background-position: center center;
 
 }
 .title{
